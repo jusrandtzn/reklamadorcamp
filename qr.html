@@ -1,1 +1,33 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beach Camp RSVP QR</title><body style="font:16px system-ui;max-width:600px;margin:4rem auto;padding:1rem"><h1>RSVP link QR code</h1><p>Enter the published public website URL to make a scannable QR code.</p><label>Public RSVP URL <input id="url" placeholder="https://username.github.io/repository/" style="width:min(100%,420px);padding:.6rem"></label><p><img id="qr" alt="QR code for RSVP website" width="280" height="280"></p><button onclick="draw()">Make QR code</button><script>function draw(){let u=document.querySelector('#url').value.trim();if(!u)return;document.querySelector('#qr').src='https://api.qrserver.com/v1/create-qr-code/?size=280x280&data='+encodeURIComponent(u)}document.querySelector('#url').addEventListener('change',draw)</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#291f37">
+  <title>Beach Camp — RSVP QR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:22px;background:linear-gradient(155deg,#342449 0%,#8e4864 38%,#f18159 68%,#f8bf70 100%);color:#fff8ea;font-family:'DM Sans',sans-serif}.card{width:min(100%,440px);position:relative;overflow:hidden;text-align:center;padding:28px 25px 25px;border:1px solid #ffe6b783;border-radius:8px;background:linear-gradient(180deg,#292034f2,#211c2bf5);box-shadow:0 24px 70px #20152b75}.card:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:#ffcb7d;opacity:.95;top:-160px;left:50%;transform:translateX(-50%);box-shadow:0 0 60px #ffbf7855}.brand{position:relative;display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;text-align:left;font:800 16px 'Barlow Condensed',sans-serif;letter-spacing:2px}.mark{display:grid;place-items:center;width:38px;height:38px;border:2px solid #ffd27f;color:#ffd27f;transform:rotate(-7deg)}.brand small{display:block;margin-top:3px;font:700 8px 'DM Sans',sans-serif;letter-spacing:1.7px;color:#ffdfae}.tag{margin:0 0 4px;color:#ffd995;font-size:10px;font-weight:700;letter-spacing:3px}h1{margin:0;font:900 clamp(38px,12vw,54px)/.92 'Barlow Condensed',sans-serif;letter-spacing:.4px}h1 em{font-style:normal;color:#ffd27f}.hint{margin:12px 0 18px;color:#f6e8d1;font-size:12px;line-height:1.5}.qr-frame{position:relative;width:min(100%,310px);margin:0 auto;padding:13px;border:1px solid #ffd27f;border-radius:4px;background:#fff0ca;box-shadow:0 10px 35px #120e1b75}.qr-frame img{display:block;width:100%;height:auto;image-rendering:pixelated}.float{position:absolute;top:16px;color:#ffc96d;font-size:25px;text-shadow:2px 2px #e96562}.float.left{left:18px}.float.right{right:18px;color:#7ee2d2;text-shadow:2px 2px #3f7794}.links{display:flex;justify-content:center;align-items:center;gap:15px;flex-wrap:wrap;margin-top:18px}.links a{color:#ffdfae;font-size:11px;font-weight:700;text-decoration-thickness:1px;text-underline-offset:3px}.links a:first-child{display:inline-block;padding:11px 15px;border-radius:3px;background:#ffd27f;color:#342239;text-decoration:none;letter-spacing:1px}.foot{margin:20px 0 0;color:#eed9c2a8;font-size:9px;letter-spacing:2.3px}@media(max-width:390px){.card{padding:24px 18px}.float{top:13px}}
+  </style>
+</head>
+<body>
+  <main class="card" aria-labelledby="title">
+    <div class="brand"><span class="mark">BC</span><span>BEACH CAMP<small>GOLDEN HOUR • ’26</small></span></div>
+    <p class="tag">SUNSET • SALT AIR • GOOD PEOPLE</p>
+    <h1 id="title">SCAN TO <em>RSVP</em></h1>
+    <p class="hint">Point your camera here and join us for<br>camping on a beach.</p>
+    <span class="float left" aria-hidden="true">◉</span><span class="float right" aria-hidden="true">◍</span>
+    <div class="qr-frame"><img id="qr" alt="Scannable QR code linking to the Beach Camp RSVP website"></div>
+    <div class="links"><a id="save" target="_blank" rel="noopener">OPEN / SAVE QR PNG</a><a id="visit" target="_blank" rel="noopener">OPEN RSVP SITE ↗</a></div>
+    <p class="foot">YOU’RE INVITED • BEACH CAMP</p>
+  </main>
+  <script>
+    const site='https://jusrandtzn.github.io/reklamadorcamp/';
+    const image='https://api.qrserver.com/v1/create-qr-code/?size=720x720&color=302338&bgcolor=fff0ca&margin=12&data='+encodeURIComponent(site);
+    document.querySelector('#qr').src=image;
+    document.querySelector('#save').href=image;
+    document.querySelector('#visit').href=site;
+  </script>
+</body>
+</html>
