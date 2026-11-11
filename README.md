@@ -1,15 +1,28 @@
 # Beach Camp RSVP
 
-Mobile-friendly RSVP site with sunset artwork, 2 Truths, 1 Lie form, and private host dashboard.
+Mobile-friendly RSVP site with a sunset beach scene, animated floaties, 2 Truths, 1 Lie form, and a live host dashboard.
 
-## Enable GitHub Pages
+## Public site
 
-In repository Settings → Pages, select Deploy from a branch, `main`, and `/(root)`. The public URL will be `https://jusrandtzn.github.io/reklamadorcamp/`.
+- RSVP: https://jusrandtzn.github.io/reklamadorcamp/
+- Host dashboard: https://jusrandtzn.github.io/reklamadorcamp/dashboard.html
+- Themed QR card: https://jusrandtzn.github.io/reklamadorcamp/qr.html
 
-## Configure live submissions
+## Firebase setup already connected
 
-GitHub Pages is static hosting. To collect submissions and update the dashboard live, create a Firebase project, enable Realtime Database and Authentication (Anonymous plus Email/Password), create a host account, copy `firebase-config.example.js` to `firebase-config.js`, and add the project's Web app config. Use Database Rules to allow anonymous authenticated users to write submissions and reserve reads for password-authenticated hosts. Then publish `firebase-config.js`, open `dashboard.html`, and sign in as the host. See Firebase's Database rules for safe, field-specific validation.
+The site uses the `Beach Camp RSVP` Firebase project and its Realtime Database. The Firebase browser config is in `firebase-config.js`; Firebase Web config/API keys are public identifiers, not server secrets. Database Rules—not secrecy of the web config—protect submissions.
 
-The form stores name, three statements, selected lie, and timestamp. Lie selection is shown only on the dashboard. Without Firebase config, entries are stored only in the guest's browser.
+Guests sign in anonymously before submitting. Database rules allow an anonymous guest to create one validated submission and prevent updates. Reads require a password sign-in using the verified host email. The personal email appears only in Firebase Database Rules, not in the public repository. Authentication also authorizes `jusrandtzn.github.io`.
 
-Music starts when a visitor taps the player control because browsers restrict autoplay with sound. The sunset beach scene uses responsive CSS artwork.
+## Create your host login
+
+1. Open the host dashboard above.
+2. Select **Create one** below the sign-in form. Use your personal Firebase email, choose a password yourself, and create the account.
+3. Open the Firebase verification email, follow its link, return to the dashboard, then choose **I verified — check again**.
+4. Sign in with that email/password whenever you want to review live submissions.
+
+Only the verified host email can read the submissions. Guest data includes name, three statements, lie selection, and submission time. Keep the dashboard and guest responses private.
+
+## Music
+
+“Vacation” by Dirty Heads loads after a visitor taps the music control because browsers commonly block audible autoplay.
